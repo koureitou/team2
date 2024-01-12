@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>入出庫情報登録</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 20px;
+		}
+
+		form {
+			max-width: 600px;
+			margin: auto;
+		}
+
+		label {
+			display: block;
+			margin-top: 10px;
+		}
+
+		input,
+		select {
+			width: 100%;
+			padding: 8px;
+			margin-top: 5px;
+			margin-bottom: 10px;
+			box-sizing: border-box;
+		}
+
+		button {
+			background-color: #4CAF50;
+			color: white;
+			padding: 10px 15px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+
+		button:hover {
+			background-color: #45a049;
+		}
+	</style>
+	<script>
+		function registerStockEntry() {
+			console.log("Stock entry registered successfully.");
+		}
+
+		function updateStockEntry() {
+			console.log("Stock entry updated successfully.");
+		}
+
+		function goBack() {
+			console.log("/index");
+		}
+	</script>
+</head>
+
+<body>
+
+	<form id="stockEntryForm">
+		<label for="productId">商品ID:</label>
+		<input type="text" id="productId" name="productId" required>
+
+		<label for="productName">商品名:</label>
+		<input type="text" id="productName" name="productName" maxlength="50" required>
+
+		<label for="unit">単位:</label>
+		<input type="text" id="unit" name="unit" maxlength="50" required>
+		
+		<label for="inoutType">入出庫種別:</label>
+		<input type="text" id="inoutType" name="inoutType" maxlength="20" required>
+		
+		<label for="documentNo">伝票番号:</label>
+		<input type="text" id="documentNo" name="documentNo" maxlength="5" required>
+
+		<label for="warehouseName">倉庫名:</label>
+		<select id="warehouseName" name="warehouseName">
+			<option value="A倉庫">A倉庫</option>
+			<option value="B倉庫">B倉庫</option>
+			<option value="C倉庫">C倉庫</option>
+		</select>
+
+		<label for="unitPrice">単価:</label>
+		<input type="number" id="unitPrice" name="unitPrice" step="0.01" required>
+
+		<label for="quantity">入出庫数量:</label>
+		<input type="number" id="quantity" name="quantity" required>
+
+		<label for="remarks">備考:</label>
+		<textarea id="remarks" name="remarks" rows="4" maxlength="200"></textarea>
+
+		<button type="button" onclick="registerStockEntry()">登録</button>
+		<button type="button" onclick="updateStockEntry()">修正</button>
+		<button type="button" onclick="goBack()">戻る</button>
+	</form>
+
+</body>
+
+</html>
