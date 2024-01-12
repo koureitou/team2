@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Team2Application {
 
-	//test
+	//testa1
 	public static void main(String[] args) {
 		SpringApplication.run(Team2Application.class, args);
 	}
