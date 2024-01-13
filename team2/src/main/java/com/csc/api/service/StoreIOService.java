@@ -6,4 +6,6 @@ public interface StoreIOService {
 
 	public void updateCustomInfo(StoreIOForm inParam) ;
 
+	public int addCustomInfo(StoreIOForm inParam);
+
 }
