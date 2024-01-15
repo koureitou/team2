@@ -10,10 +10,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.csc.api.form.StoreIOForm;
 import com.csc.api.service.StoreIOService;
-import lombok.RequiredArgsConstructor;
 
+import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
@@ -36,7 +37,7 @@ public class StoreIOController {
         }
 
         try {
-        	service.updateCustomInfo(inParam);
+        	service.updateStoreInfo(inParam);
             return ResponseEntity.ok("Update successful");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Business logic error: " + e.getMessage());
@@ -55,7 +56,7 @@ public class StoreIOController {
         }
 
         try {
-        	 int addok = service.addCustomInfo(inParam);
+        	 int addok = service.addStoreInfo(inParam);
             return ResponseEntity.ok(addok);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(0);

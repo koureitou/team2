@@ -5,6 +5,44 @@
 	<meta charset="UTF-8">
 	<title>入出庫情報登録</title>
 	<link rel="stylesheet" type="text/css" href="/css/main.css">
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 20px;
+		}
+
+		form {
+			max-width: 600px;
+			margin: auto;
+		}
+
+		label {
+			display: block;
+			margin-top: 10px;
+		}
+
+		input,
+		select {
+			width: 100%;
+			padding: 8px;
+			margin-top: 5px;
+			margin-bottom: 10px;
+			box-sizing: border-box;
+		}
+
+		button {
+			background-color: #4CAF50;
+			color: white;
+			padding: 10px 15px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+
+		button:hover {
+			background-color: #45a049;
+		}
+	</style>
 	<script>
 		function registerStockEntry() {
 			console.log("Stock entry registered successfully.");
@@ -31,10 +69,10 @@
 
 		<label for="unit">単位:</label>
 		<input type="text" id="unit" name="unit" maxlength="50" required>
-		
+
 		<label for="inoutType">入出庫種別:</label>
 		<input type="text" id="inoutType" name="inoutType" maxlength="20" required>
-		
+
 		<label for="documentNo">伝票番号:</label>
 		<input type="text" id="documentNo" name="documentNo" maxlength="5" required>
 
