@@ -19,6 +19,6 @@ public class StoreIoDao {
 	}
 	public void updateStoreIO(StoreIOForm form) {
 		stmapper.updateStoreIO(form);
-		return;
+		
 	}
 }
