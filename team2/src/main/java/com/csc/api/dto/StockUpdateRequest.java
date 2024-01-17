@@ -9,6 +9,7 @@ import lombok.Data;
  * 
 */
 
+
 @Data
 public class StockUpdateRequest extends StockAddRequest implements Serializable {
 

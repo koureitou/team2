@@ -10,6 +10,7 @@ import lombok.Data;
  * date:2024/1/17
  * 
 */
+
 @Data
 public class StockSearchRequest implements Serializable {
 

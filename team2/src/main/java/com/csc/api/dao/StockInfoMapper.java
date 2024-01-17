@@ -15,6 +15,7 @@ import com.csc.api.entity.StockInfo;
  * date:2024/1/17
  * 
 */
+
 @Mapper
 public interface StockInfoMapper {
 

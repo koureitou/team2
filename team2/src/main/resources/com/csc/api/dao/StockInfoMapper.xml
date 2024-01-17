@@ -11,6 +11,7 @@
  * 
 */
  -->
+ 
 	<select id="getMaxId" resultType="java.lang.Integer">
 		SELECT MAX(id)+1 FROM t_stock
 	</select>
