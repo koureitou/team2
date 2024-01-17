@@ -22,5 +22,18 @@
 		<result column="update_user" property="updateUser"></result>
 
 	</resultMap>
-
+	
+	<insert id="addStoreIO">
+	insert into t_stock_io(inout_type_id,document_no,product_id,product_name,unit_id,warehouse_id,
+	unit_price,quantity,total,comm,createDate,createUser)
+	values (
+		#{inoutTypeId},#{documentNo},#{productId},#{productName},#{unitId},
+		#{warehouseId},#{unitPrice},#{quantity},#{total},#{comm},sysdate(),'admin'
+		)
+	</insert>
+	<select id="getMaxId" resultType="java.lang.Integer">
+		select max(document_no)+1 from
+		t_stock_io where product_id=#{productId} and inout_type_id=#{inoutTypeId}
+	</select>
+	
 </mapper>
