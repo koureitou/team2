@@ -8,7 +8,7 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class StockInformetion {
+public class StockAddInformetion {
 
 	private String stockId;//在庫商品ID
 	
