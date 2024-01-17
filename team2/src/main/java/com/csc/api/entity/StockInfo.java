@@ -3,6 +3,11 @@ package com.csc.api.entity;
 import java.sql.Date;
 
 import lombok.Data;
+/*
+ * author: セツ
+ * date:2024/1/17
+ * 
+*/
 
 @Data
 public class StockInfo {

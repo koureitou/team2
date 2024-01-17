@@ -11,7 +11,11 @@ import com.csc.api.dto.StockSearchRequest;
 import com.csc.api.dto.StockUpdateRequest;
 import com.csc.api.entity.StockInfo;
 
-
+/*
+ * author: セツ
+ * date:2024/1/17
+ * 
+*/
 
 @Service
 public class StockInfoService {

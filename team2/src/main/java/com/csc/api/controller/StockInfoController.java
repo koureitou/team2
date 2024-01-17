@@ -22,7 +22,11 @@ import com.csc.api.dto.StockUpdateRequest;
 import com.csc.api.entity.StockInfo;
 import com.csc.api.service.StockInfoService;
 
-
+/*
+ * author: セツ
+ * date:2024/1/17
+ * 
+*/
 
 
 @Controller
