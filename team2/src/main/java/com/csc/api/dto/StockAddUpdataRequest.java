@@ -14,7 +14,7 @@ public class StockAddUpdataRequest {
 	
 	@NotEmpty(message ="在庫商品IDを入力してください")
 	@Size(max =6, message ="6桁以内の在庫商品IDを入力してください")
-	private String stock_id;
+	private String id;
 	@Size(max =50, message ="50桁以内の在庫商品名称を入力できます。")
 	private String neme;
 	@Size(max =11, message ="6桁の単位IDを入力できます。")
