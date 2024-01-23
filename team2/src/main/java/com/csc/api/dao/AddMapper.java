@@ -2,6 +2,7 @@ package com.csc.api.dao;
 
 import org.apache.ibatis.annotations.Mapper;
 
+
 /*
  * author:フォン
  * data :2024/01/23
@@ -11,5 +12,10 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public class AddMapper {
 	
+	Integer getMaxId() {
+		return null;
+	}
+	
+
 	
 }
