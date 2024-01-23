@@ -13,78 +13,21 @@ data:2024/01/23
 		SELECT MAX(id)+1 FROM t_stock
 	</select>
 
-	<select id="findAll"
-		resultType="com.csc.api.entity.StockInfo">
-		SELECT t1.* ,
-		t2.code_name AS code_name
-		FROM t_stock t1
-		LEFT JOIN m_code t2 ON
-		t1.unit_id = t2.code_id AND t2.code_kbn = 'A:単位区分'
-		WHERE t1.del_flg = 0
-	</select>
-	<select id="findById"
-		resultType="com.csc.api.entity.StockInfo">
-		SELECT * 
-		FROM t_stock WHERE id=#{id} AND del_flg = 0
-	</select>
-
-	<select id="search"
-		resultType="com.csc.api.entity.StockInfo">
-
-		SELECT t1.* ,
-		t2.code_name AS code_name
-		FROM t_stock t1
-		LEFT JOIN m_code
-		t2 ON t1.unit_id = t2.code_id
-		<where>
-			t1.del_flg = 0 AND t2.code_kbn = 'A01'
-
-			<if test="name != null and name != ''">
-				AND t1.name = #{name}
-			</if>
-
-			<if test="unitId != null and unitId != 99">
-				AND t1.unit_id = #{unitId}
-			</if>
-
-			<if test="startDate != null and startDate != ''">
-				AND t1.update_date &gt;= #{startDate}
-			</if>
-
-			<if test="endDate != null and endDate != ''">
-				AND t1.update_date &lt;= #{endDate}
-			</if>
-
-		</where>
-
-
-	</select>
-
+	<!--  -->
 	<insert id="save">
 		INSERT INTO t_stock
-		(id,
-		name,
+		(name,
 		unit_id,
-		del_flg,
 		remarks,
-		stock_num,
-		create_date,
 		create_user,
-		update_date,
 		update_user
 		)
 		VALUES
-		(#{id},
-		#{name},
+		(#{name},
 		#{unitId},
-		0,
 		#{remarks},
-		0,
-		CURRENT_TIMESTAMP,
-		#{loginUser},
-		CURRENT_TIMESTAMP,
-		#{loginUser}
-
+		#{createUser},
+		#{updateUser}
 		)
 	</insert>
 	<update id="update">
