@@ -1,0 +1,39 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.csc.api.mapper.StoreIOMapper">
+	<resultMap type="com.csc.api.entity.StoreIOEntity"
+		id="StoreIOMap">
+		<id column="inout_type_id" property="inoutTypeId"></id>
+		<id column="document_no" property="documentNo"></id>
+		<result column="product_id" property="productId"></result>
+		<result column="product_name" property="productName"></result>
+		<result column="unit_id" property="unitId"></result>
+		<result column="warehouse_id" property="warehouseId"></result>
+		<result column="unit_price" property="unitPrice"></result>
+		<result column="quantity" property="quantity"></result>
+		<result column="total" property="total"></result>
+		<result column="comm" property="comm"></result>
+		<result column="del_flg" property="delFlg"></result>
+		<result column="create_date" property="createDate"></result>
+		<result column="create_user" property="createUser"></result>
+		<result column="update_date" property="updateDate"></result>
+		<result column="update_user" property="updateUser"></result>
+
+	</resultMap>
+	
+	<insert id="addStoreIO">
+	insert into t_stock_io(inout_type_id,document_no,product_id,product_name,unit_id,warehouse_id,
+	unit_price,quantity,total,comm,createDate,createUser)
+	values (
+		#{inoutTypeId},#{documentNo},#{productId},#{productName},#{unitId},
+		#{warehouseId},#{unitPrice},#{quantity},#{total},#{comm},sysdate(),'admin'
+		)
+	</insert>
+	<select id="getMaxId" resultType="java.lang.Integer">
+		select max(document_no)+1 from
+		t_stock_io where product_id=#{productId} and inout_type_id=#{inoutTypeId}
+	</select>
+	
+</mapper>

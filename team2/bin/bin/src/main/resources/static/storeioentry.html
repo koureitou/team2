@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>入出庫情報登録</title>
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+</head>
+
+<body>
+
+	<form id="myForm">
+		<label for="productId">商品ID:</label>
+		<input type="text" id="productId" name="productId" disabled>
+
+		<label for="productName">商品名:</label>
+		<input type="text" id="productName" name="productName" maxlength="50" disabled>
+
+		<label for="unit">単位:</label>
+		<input type="text" id="unit" name="unit" maxlength="50" disabled>
+
+		<label for="inoutType">入出庫種別:</label>
+		<input type="text" id="inoutType" name="inoutType" maxlength="20" disabled>
+
+		<label for="documentNo">伝票番号:</label>
+		<input type="text" id="documentNo" name="documentNo" maxlength="5" disabled>
+
+		<label for="warehouseName">倉庫名:</label>
+		<select id="warehouseName" name="warehouseName">
+			<option value="A倉庫">A倉庫</option>
+			<option value="B倉庫">B倉庫</option>
+			<option value="C倉庫">C倉庫</option>
+		</select>
+
+		<label for="unitPrice">単価:</label>
+		<input type="number" id="unitPrice" name="unitPrice" step="0.01" required>
+
+		<label for="quantity">入出庫数量:</label>
+		<input type="number" id="quantity" name="quantity" required>
+
+		<label for="remarks">備考:</label>
+		<textarea id="remarks" name="remarks" rows="4" maxlength="200"></textarea>
+
+		<button type="button" onclick="addData()">登録</button>
+		<button type="button" onclick="editData()">修正</button>
+		<button type="button" onclick="goBack()">戻る</button>
+		<script>
+			function goBack() {
+				window.location.href = "/index.html";
+			}
+			function addData() {
+				sendData("/storeio/entry");
+				//console.log("Stock entry registered successfully.");
+			}
+
+			function editData() {
+				sendData("/storeio/update");
+				//console.log("Stock entry updated successfully.");
+			}
+
+			function sendData(endpoint) {
+				// フォーム要素の値を取得する
+				var productId = document.getElementById("productId").value;
+				var productName = document.getElementById("productName").value;
+				var unit = document.getElementById("unit").value;
+				var inoutType = document.getElementById("inoutType").value;
+				var documentNo = document.getElementById("documentNo").value;
+				var warehouseName = document.getElementById("warehouseName").value;
+				var unitPrice = document.getElementById("unitPrice").value;
+				var quantity = document.getElementById("quantity").value;
+				var remarks = document.getElementById("remarks").value;
+			
+				// フォームデータを含むJSONオブジェクトを作成する
+				var formData = {
+					//商品ID		
+					productId: productId,
+					//商品名		
+					productName: productName,
+					//単位		
+					unit: unit,
+					//入出庫種別		
+					inoutType: inoutType,
+					//伝票番号		
+					documentNo: documentNo,
+					//倉庫名		
+					warehouseName: warehouseName,
+					//単価		
+					unitPrice: unitPrice,
+					//入出庫数量		
+					quantity: quantity,
+					//備考		
+					remarks: remarks
+				};
+
+				// JSONオブジェクトを文字列に変換する
+				var jsonData = JSON.stringify(formData);
+
+				// AJAX を使用して JSON データをバックエンドに送信する
+				var xhr = new XMLHttpRequest();
+				xhr.open("POST", endpoint, true);
+				xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+				xhr.onreadystatechange = function () {
+					if (xhr.readyState === 4) {
+						if (xhr.status === 200) {
+							// バックエンドから返されたデータを処理する
+							var response = JSON.parse(xhr.responseText);
+							console.log(response);
+						} else {
+							console.error("Error:", xhr.status);
+						}
+					}
+				};
+				xhr.send(jsonData);
+			}
+		</script>
+
+</body>
+
+</html>
+
+

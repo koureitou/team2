@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csc.api.dao.AddMapper" >
+
+<!-- 
+author:フォン
+data:2024/01/23
+ -->
+ 
+	<select id="getMaxId" resultType="java.lang.Integer">
+		SELECT MAX(id)+1 FROM t_stock
+	</select>
+
+	<!--  -->
+	<insert id="save">
+		INSERT INTO t_stock
+		(name,
+		unit_id,
+		remarks,
+		create_user,
+		update_user
+		)
+		VALUES
+		(#{name},
+		#{unitId},
+		#{remarks},
+		#{createUser},
+		#{updateUser}
+		)
+	</insert>
+	<update id="update">
+		UPDATE t_stock SET name = #{name}, id = #{id},
+		unit_id = #{unitId},
+		remarks =#{remarks},
+		update_user= #{loginUser},
+		update_date = CURRENT_TIMESTAMP WHERE id =
+		#{id}
+	</update>
+
+	<update id="delete">
+		UPDATE t_stock SET del_flg = 1 WHERE id = #{id}
+	</update>
+
+
+</mapper>
