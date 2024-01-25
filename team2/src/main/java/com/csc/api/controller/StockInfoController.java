@@ -55,7 +55,7 @@ public class StockInfoController {
 	    
 	    }
 	 
-	 @GetMapping("/stock/{id}/edit")
+//	 @GetMapping("/stock/{id}/edit")
 	    public String displayEdit(@PathVariable Integer id, Model model) {
 		 StockInfo stock = stockInfoService.findById(id);
 		 StockUpdateRequest stockUpdateRequest = new StockUpdateRequest();
@@ -65,8 +65,8 @@ public class StockInfoController {
 		 stockUpdateRequest.setRemarks(stock.getRemarks());
 	        
 	        model.addAttribute("stockUpdateRequest", stockUpdateRequest);
-	        return "stock/edit";
-	    }	 
+	        return "Add";
+	    }
 	 
 	 @GetMapping("/stock/{id}/delete")
 	    public String delete(@PathVariable Integer id, Model model) {

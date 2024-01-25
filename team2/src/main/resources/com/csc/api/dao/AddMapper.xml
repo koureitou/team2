@@ -8,12 +8,15 @@
 author:フォン
 data:2024/01/23
  -->
- 
+ 	<!-- 自動取得最大值id的機能條件設定 
+ 	因為新增id的時候通常都是從既有的id資料裡更新,不能已經有的id資料重複
+ 	所以必須從最大值開始
+ 	-->
 	<select id="getMaxId" resultType="java.lang.Integer">
 		SELECT MAX(id)+1 FROM t_stock
 	</select>
 
-	<!--  -->
+	<!--儲存更新的檔案機能的條件設定-->
 	<insert id="save">
 		INSERT INTO t_stock
 		(name,
@@ -31,12 +34,11 @@ data:2024/01/23
 		)
 	</insert>
 	<update id="update">
-		UPDATE t_stock SET name = #{name}, id = #{id},
+		UPDATE t_stock SET name = #{name},
 		unit_id = #{unitId},
 		remarks =#{remarks},
-		update_user= #{loginUser},
-		update_date = CURRENT_TIMESTAMP WHERE id =
-		#{id}
+		update_user ="test1"
+		WHERE id = #{id}
 	</update>
 
 	<update id="delete">

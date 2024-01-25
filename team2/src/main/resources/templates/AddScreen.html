@@ -3,7 +3,7 @@
 <!-- 
 *author:フォン
 *date  :2024/01/24
-*在庫一覧画面の編集から在庫更新用のHTML
+*在庫更新、登録用画面単独用のHTML
  -->
 <head>
 <meta charset="UTF-8">
@@ -11,9 +11,9 @@
 </head>
 <body>
 	<div class="container">
-		<h1>在庫商品登録</h1>						
-		<form th:action="@{insert}" th:object="${stockUpdateRequest}" th:method="post">
-						<!--↑這裡必須要跟controll檔案設定的網址一樣  -->
+		<h1>在庫商品登録</h1>
+		<form th:object="${stockAddSavedateRequest}" id="addForm">
+			<!--↑這裡必須要跟controll檔案設定的網址一樣  -->
 			<div class="form-group">
 				<label>在庫ID：</label> <input type="text" placeholder="在庫IDを入力してください"
 					th:field="*{id}" class="form-control" readonly>
@@ -41,13 +41,27 @@
 					class="form-control">
 			</div>
 			<div class="text-center">
-				<input type="submit" th:value="${btn}" class="btn btn-primary"> 
+				<input id="mode" type="button" onclick="submitform('addForm','post')"
+					th:value="${btn}" class="btn btn-primary">
 				<!--  -->
-				<a
-					href="/user/list" class="btn btn-secondary">閉じる</a>
+				<a href="/user/list" class="btn btn-secondary">閉じる</a>
 			</div>
 		</form>
 	</div>
+	<script type="text/javascript">
+		function submitform(formid, method) {
+			var mode = document.getElementById("mode").value;
+			console.log(mode);
+			var form = document.getElementById(formid);
+			if (mode == "登録") {
+				form.action = "/insert";
+			} else if (mode == "更新") {
+				form.action = "/update";
+			}
+			form.method = method;
+			form.submit();
+		}
+	</script>
 </body>
 
 </html>
