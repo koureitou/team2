@@ -32,6 +32,7 @@ public class AddController {
 		model.addAttribute("btn","登録");
 		return "AddScreen";
 	}
+	//在庫情報画面一覧の編集ボタンの遷移先とボタン機能の設定
 	@GetMapping(value = "/stock/{id}/edit")
 	public String stocupdataView2(@PathVariable Integer id, Model model,StockAddSavedateRequest stockAddSavedateRequest) {
 		StockInfo stock = stockInfoService.findById(id);
@@ -50,7 +51,7 @@ public class AddController {
         return "redirect:/stock/list";//遷移したい画面の先 セツさんが作った画面
 	}
 	
-	//登録機能の宣言とクラスの代入
+	//更新機能の宣言とクラスの代入
 	@PostMapping(value = "/update") //
 	public String Addupdate(Model model,StockAddUpdatedateRequest stockAddUpdatedateRequest) {
 		stockAddService.addupdate(stockAddUpdatedateRequest);
